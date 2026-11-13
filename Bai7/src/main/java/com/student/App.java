@@ -16,6 +16,8 @@ public class App {
    */
   public boolean isReady() {
     LOGGER.info("Readiness check completed");
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    int Bad_Var_Name = 1;
     return true;
   }
 }
