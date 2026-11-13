@@ -1,0 +1,22 @@
+name: Bai 6 - Maven Dependency Cache
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Build with cached Maven dependencies
+        working-directory: Bai6
+        run: mvn --batch-mode --no-transfer-progress clean package

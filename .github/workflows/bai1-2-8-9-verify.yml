@@ -1,0 +1,40 @@
+name: Bai 1, 2, 8, 9 - Maven Build, Checkstyle, JAR & Logging
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-core-exercises:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Bai 1 - Verify MathUtils dependencies and tests
+        working-directory: Bai1
+        run: mvn --batch-mode --no-transfer-progress clean verify
+
+      - name: Bai 2 - Verify BankSystem Checkstyle and tests
+        working-directory: Bai2
+        run: mvn --batch-mode --no-transfer-progress clean verify
+
+      - name: Bai 8 - Package and run standalone executable JAR
+        working-directory: Bai8
+        run: |
+          mvn --batch-mode --no-transfer-progress clean package
+          java -jar target/executable-app-1.0.0.jar
+
+      - name: Bai 9 - Verify SLF4J/Logback console and file output
+        working-directory: Bai9
+        run: |
+          mvn --batch-mode --no-transfer-progress clean test
+          test -s logs/application.log
+          cat logs/application.log
