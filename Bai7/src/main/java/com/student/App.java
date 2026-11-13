@@ -15,9 +15,7 @@ public class App {
    * @return true when service is ready
    */
   public boolean isReady() {
-    LOGGER.info("Readiness check completed");
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
-    int Bad_Var_Name = 1;
+    LOGGER.info("Readiness check completed")
     return true;
   }
 }
