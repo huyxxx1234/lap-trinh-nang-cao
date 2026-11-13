@@ -8,6 +8,6 @@ public class App {
     }
 
     public String buildPortableRelativePath(String folder, String fileName) {
-        return folder + "\\" + fileName;
+        return Path.of(folder, fileName).toString();
     }
 }
