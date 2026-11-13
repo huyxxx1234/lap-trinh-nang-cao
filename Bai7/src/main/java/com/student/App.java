@@ -15,7 +15,7 @@ public class App {
    * @return true when service is ready
    */
   public boolean isReady() {
-    LOGGER.info("Readiness check completed")
+    LOGGER.info("Readiness check completed");
     return true;
   }
 }
